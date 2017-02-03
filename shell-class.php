@@ -2,10 +2,12 @@
 class Shell {
 
     private function output_green( $output ) {
+        $output = trim( $output );
         return "\033[32m" . $output . "\033[0m";
     }
 
     private function output_red( $output ) {
+        $output = trim( $output );
         return "\033[31m" . $output . "\033[0m";
     }
 
@@ -74,8 +76,8 @@ class Shell {
 
         return array(
             "cmd_status" => $cmd_status,
-            "out" => $pipe_out_one,
-            "ex_out" => $pipe_out_two,
+            "out" => trim( $pipe_out_one ),
+            "ex_out" => trim( $pipe_out_two ),
         );
     }
 }
