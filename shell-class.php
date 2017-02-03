@@ -56,6 +56,9 @@ class Shell {
             }
         }
 
+        $pipe_out_one = stream_get_contents($pipes[1]);
+        $pipe_out_two = stream_get_contents($pipes[2]);
+
         fclose($pipes[0]);
         fclose($pipes[1]);
         fclose($pipes[2]);
@@ -67,6 +70,10 @@ class Shell {
             echo $this->output_green( "Done!" ) . PHP_EOL;
         }
 
-        return $cmd_status;
+        return array(
+            "cmd_status" => $cmd_status,
+            "out" => $pipe_out_one,
+            "ex_out" => $pipe_out_two,
+        );
     }
 }
