@@ -27,20 +27,20 @@ class Shell {
         stream_set_blocking($pipes[1], $blocking);
         stream_set_blocking($pipes[2], $blocking);
 
-        $pipe_out_one = "";
-        $pipe_out_two = "";
+        $stdout = "";
+        $stderr = "";
 
         $output = "";
         while (!feof($pipes[2])) {
             $read = array($pipes[2]);
-            $other_read = array($pipes[1]);
+            $stdout_read = array($pipes[1]);
             $write = NULL;
             $except = NULL;
             stream_select($read, $write, $except, 0);
-            if ( time() - $start > 10 && empty($read) && empty($other_read) ) die( "\033[31mTIME OUT! -- Pipe 2.\033[0m" . PHP_EOL );
+            if ( time() - $start > 10 && empty($read) && empty($stdout_read) ) die( "\033[31mTIME OUT! -- STDERR.\033[0m" . PHP_EOL );
             if (!empty($read) ) {
                 $output = fgets($pipes[2]);
-                $pipe_out_two .= $output;
+                $stderr .= $output;
                 # HERE PARSE $output TO UPDATE DOWNLOAD STATUS...
                 echo $this->output_green( $output ) . PHP_EOL;
             }
@@ -50,14 +50,14 @@ class Shell {
         $output = "";
         while (!feof($pipes[1])) {
             $read = array($pipes[1]);
-            $other_read = array($pipes[2]);
+            $stderr_read = array($pipes[2]);
             $write = NULL;
             $except = NULL;
             stream_select($read, $write, $except, 0);
-            if ( time() - $start > 10 && empty($read) && empty($other_read) ) die( "\e[31mTIME OUT! -- Pipe 1.\e[0m" . PHP_EOL );
+            if ( time() - $start > 10 && empty($read) && empty($stderr_read) ) die( "\e[31mTIME OUT! -- STDOUT.\e[0m" . PHP_EOL );
             if (!empty($read) && fgets($pipes[1]) != $output ) {
                 $output = fgets($pipes[1]);
-                $pipe_out_one .= $output;
+                $stdout .= $output;
                 # HERE PARSE $output TO UPDATE DOWNLOAD STATUS...
                 echo $this->output_green( $output ) . PHP_EOL;
             }
