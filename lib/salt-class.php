@@ -10,7 +10,7 @@ class Salt {
 
     public function restart() {
         $shell = new Shell();
-        $cmd = "/etc/init.d/salt-master restart && /etc/init.d/salt-minion restart";
+        $cmd = "/etc/init.d/salt-master restart && /etc/init.d/salt-minion restart 2>&1";
         $result = $shell->do_shell_cmd( $cmd, 1 );
         return $result;
     }
