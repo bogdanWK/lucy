@@ -42,7 +42,7 @@ class Shell {
                 $output = fgets($pipes[2]);
                 $pipe_out_two .= $output;
                 # HERE PARSE $output TO UPDATE DOWNLOAD STATUS...
-                echo $this->output_green( $output );
+                echo $this->output_green( $output ) . PHP_EOL;
             }
 
         }
@@ -59,7 +59,7 @@ class Shell {
                 $output = fgets($pipes[1]);
                 $pipe_out_one .= $output;
                 # HERE PARSE $output TO UPDATE DOWNLOAD STATUS...
-                echo $this->output_green( $output );
+                echo $this->output_green( $output ) . PHP_EOL;
             }
         }
 
