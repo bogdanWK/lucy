@@ -25,6 +25,9 @@ class Shell {
         stream_set_blocking($pipes[1], 0);
         stream_set_blocking($pipes[2], 0);
 
+        $pipe_out_one = "";
+        $pipe_out_two = "";
+
         $output = "";
         while (!feof($pipes[2])) {
             $read = array($pipes[2]);
@@ -35,6 +38,7 @@ class Shell {
             if ( time() - $start > 10 && empty($read) && empty($other_read) ) die( "\033[31mTIME OUT! -- Pipe 2.\033[0m" . PHP_EOL );
             if (!empty($read) ) {
                 $output = fgets($pipes[2]);
+                $pipe_out_two .= $output;
                 # HERE PARSE $output TO UPDATE DOWNLOAD STATUS...
                 echo $this->output_green( $output );
             }
@@ -51,13 +55,11 @@ class Shell {
             if ( time() - $start > 10 && empty($read) && empty($other_read) ) die( "\e[31mTIME OUT! -- Pipe 1.\e[0m" . PHP_EOL );
             if (!empty($read) && fgets($pipes[1]) != $output ) {
                 $output = fgets($pipes[1]);
+                $pipe_out_one .= $output;
                 # HERE PARSE $output TO UPDATE DOWNLOAD STATUS...
                 echo $this->output_green( $output );
             }
         }
-
-        $pipe_out_one = stream_get_contents($pipes[1]);
-        $pipe_out_two = stream_get_contents($pipes[2]);
 
         fclose($pipes[0]);
         fclose($pipes[1]);
