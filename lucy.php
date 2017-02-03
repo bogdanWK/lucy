@@ -6,10 +6,28 @@ spl_autoload_register( function( $class_name ) {
 
 $salt = new Salt();
 
+$res = $salt->stop();
+print_r( $res );
+
+$res = $salt->start();
+print_r( $res );
+
+$res = $salt->restart();
+print_r( $res );
+
 $res = $salt->exec_salt_cmd( '/etc/init.d/httpd status' );
 print_r( $res );
 
 $res = $salt->exec_salt_cmd( '/etc/init.d/mysqld status' );
+print_r( $res );
+
+$res = $salt->exec_salt_cmd( '/etc/init.d/httpd stop' );
+print_r( $res );
+
+$res = $salt->exec_salt_cmd( '/etc/init.d/httpd start' );
+print_r( $res );
+
+$res = $salt->exec_salt_cmd( '/etc/init.d/httpd restart' );
 print_r( $res );
 
 ?>
