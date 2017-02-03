@@ -6,12 +6,6 @@ spl_autoload_register( function( $class_name ) {
 
 $salt = new Salt();
 
-$res = $salt->stop();
-print_r( $res );
-
-$res = $salt->start();
-print_r( $res );
-
 $res = $salt->restart();
 print_r( $res );
 
