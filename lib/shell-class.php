@@ -11,7 +11,7 @@ class Shell {
         return "\033[31m" . $output . "\033[0m";
     }
 
-    public function do_shell_cmd( $cmd = '' ) {
+    public function do_shell_cmd( $cmd = '', $blocking = 0 ) {
 
         $cmd = escapeshellcmd( $cmd );
 
@@ -24,8 +24,8 @@ class Shell {
         $start = time();
         $process = proc_open($cmd, $descriptors, $pipes) or die("Can't open process $cmd!");
 
-        stream_set_blocking($pipes[1], 0);
-        stream_set_blocking($pipes[2], 0);
+        stream_set_blocking($pipes[1], $blocking);
+        stream_set_blocking($pipes[2], $blocking);
 
         $pipe_out_one = "";
         $pipe_out_two = "";
