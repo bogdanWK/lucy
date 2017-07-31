@@ -1,0 +1,175 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/MaterialIcons-Regular.eot);
+  src: local("Material Icons");
+  src: local("MaterialIcons-Regular");
+  src: url(../font/MaterialIcons-Regular.woff2) format("woff2"), url(../font/MaterialIcons-Regular.woff) format("woff"), url(../font/MaterialIcons-Regular.ttf) format("truetype"); }
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga"; }
+
+#lucy-error-dashboard {
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-size: 1rem;
+  background-color: #606c76;
+  width: 100%;
+  height: 250px;
+  position: fixed;
+  left: 0;
+  bottom: -225px;
+  transition: bottom 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94); }
+  #lucy-error-dashboard.active {
+    bottom: 0; }
+  #lucy-error-dashboard .status {
+    display: inline-block;
+    height: 25px;
+    vertical-align: top;
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+    text-align: left;
+    color: #f4f5f6;
+    margin-left: 8px; }
+    #lucy-error-dashboard .status .value {
+      font-weight: bold;
+      display: inline-block;
+      text-align: center;
+      width: 20px; }
+      #lucy-error-dashboard .status .value.pass {
+        color: #8bc34a; }
+      #lucy-error-dashboard .status .value.info {
+        color: #03a9f4; }
+      #lucy-error-dashboard .status .value.warning {
+        color: #ff9800; }
+      #lucy-error-dashboard .status .value.danger {
+        color: #e57373; }
+  #lucy-error-dashboard .execution {
+    display: inline-block;
+    height: 25px;
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+    text-align: left;
+    color: #f4f5f6;
+    float: right;
+    margin-right: 8px; }
+    #lucy-error-dashboard .execution .value.pass {
+      color: #8bc34a; }
+    #lucy-error-dashboard .execution .value.warning {
+      color: #ff9800; }
+    #lucy-error-dashboard .execution .value.danger {
+      color: #e57373; }
+
+#panel-toggle {
+  display: none; }
+
+#chevron-toggle {
+  display: inline-block;
+  color: #f4f5f6;
+  width: 25px;
+  height: 25px;
+  text-align: center; }
+  #chevron-toggle i.material-icons::before {
+    font-family: "Material Icons";
+    content: ""; }
+  #chevron-toggle.active i.material-icons::before {
+    font-family: "Material Icons";
+    content: ""; }
+  #chevron-toggle:hover, #chevron-toggle:focus {
+    color: #e1e1e1;
+    background-color: #9b4dca; }
+
+.lucy-error-stack {
+  background-color: #ede7f6;
+  width: calc( 100% - 16px );
+  height: calc( 215px - 16px );
+  overflow-y: auto;
+  border-top: 1px solid #9575cd;
+  padding: 8px; }
+  .lucy-error-stack code {
+    background: #f4f5f6;
+    border-radius: 0.4rem;
+    font-size: 86%;
+    margin: 0 0.2rem;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap; }
+  .lucy-error-stack pre {
+    background: #f4f5f6;
+    border-left: 0.3rem solid #9b4dca;
+    overflow-y: hidden; }
+    .lucy-error-stack pre > code {
+      border-radius: 0;
+      display: block;
+      padding: 1rem 1.5rem;
+      white-space: pre; }
+  .lucy-error-stack .row {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #333;
+    padding: 0.2rem;
+    border-bottom: 1px solid #9575cd; }
+    .lucy-error-stack .row .error .material-icons {
+      font-size: 1rem;
+      vertical-align: bottom; }
+    .lucy-error-stack .row .desc {
+      font-style: italic; }
+    .lucy-error-stack .row .details {
+      float: right; }
+      .lucy-error-stack .row .details .file {
+        font-style: normal;
+        text-decoration: underline; }
+      .lucy-error-stack .row .details .line {
+        font-weight: bold; }
+    .lucy-error-stack .row.fatal {
+      border-color: #f44336; }
+      .lucy-error-stack .row.fatal .error, .lucy-error-stack .row.fatal .code {
+        color: #f44336;
+        font-weight: bold;
+        text-transform: uppercase; }
+    .lucy-error-stack .row.warning {
+      border-color: #ff9800; }
+      .lucy-error-stack .row.warning .error, .lucy-error-stack .row.warning .code {
+        color: #ff9800;
+        font-weight: bold;
+        text-transform: uppercase; }
+    .lucy-error-stack .row.notice {
+      border-color: #9b4dca; }
+      .lucy-error-stack .row.notice .error, .lucy-error-stack .row.notice .code {
+        color: #9b4dca;
+        font-weight: bold;
+        text-transform: uppercase; }
+    .lucy-error-stack .row.strict {
+      border-color: #ff9800; }
+      .lucy-error-stack .row.strict .error, .lucy-error-stack .row.strict .code {
+        color: #ff9800;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: underline; }
+    .lucy-error-stack .row.deprecated {
+      border-color: #f44336; }
+      .lucy-error-stack .row.deprecated .error, .lucy-error-stack .row.deprecated .code {
+        color: #f44336;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: line-through; }
+
+/*# sourceMappingURL=error-handler.css.map */

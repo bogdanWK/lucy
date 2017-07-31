@@ -57,12 +57,23 @@ class ErrorHandler
 	public function __construct( $debug = false, $mute = false )
 	{
 		set_error_handler( array( $this, "handleError" ) );
-		set_exception_handler( array( $this, "handleError" ) );
+		set_exception_handler( array( $this, "handleException" ) );
 		register_shutdown_function( array( $this, "displayError" ) );
 	}
 
 	public function displayError() {
-		var_dump( $this->errors );
+        $time_exec = number_format( microtime( true ) - LUCY_INIT, 4 );
+        $total_exec_class = 'pass';
+        if( $time_exec > 0.001 && $time_exec < 0.002 ) {
+            $total_exec_class = 'warning';
+        } else if ( $time_exec > 0.002 ) {
+            $total_exec_class = 'danger';
+        }
+	    ob_start();
+	    include ( __DIR__ . '/../partials/error-dash-tpl.php');
+	    $output = ob_get_clean();
+        echo $output;
+		//var_dump( $this->errors );
 	}
 
 	public function handleException( Exception $exception ) {
@@ -91,6 +102,9 @@ class ErrorHandler
 	public function handleError( $code, $description, $file = null, $line = null ) {
 		if( ! is_numeric( $code ) ) {
 			$code = 255;
+			if( ! isset( $description ) && $description == '' ) {
+                $description = 'FATAL';
+            }
 		}
 		$this->handleException( new ErrorException( $description, $code, 0, $file, $line ) );
 	}
@@ -103,7 +117,7 @@ class ErrorHandler
 			case E_CORE_ERROR:
 			case E_COMPILE_ERROR:
 			case E_USER_ERROR:
-				$error = 'FATAL';
+				$error = 'Fatal';
 				$log = LOG_ERR;
 				break;
 			case E_WARNING:
@@ -128,6 +142,8 @@ class ErrorHandler
 				$log = LOG_NOTICE;
 				break;
 			default :
+                $error = 'Fatal';
+                $log = LOG_ERR;
 				break;
 		}
 		return array($error, $log);

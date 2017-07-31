@@ -1,0 +1,168 @@
+#lucy-error-dashboard
+  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
+  font-size: 14px
+  font-size: 1rem
+  background-color: $color-secondary
+  width: 100%
+  height: 250px
+  position: fixed
+  left: 0
+  bottom: -225px
+  transition: bottom 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94)
+
+  &.active
+    bottom: 0
+
+  .status
+    display: inline-block
+    height: 25px
+    vertical-align: top
+    font-size: 0.8rem
+    line-height: 1.6rem
+    text-align: left
+    color: $color-tertiary
+    margin-left: 8px
+
+    .value
+      font-weight: bold
+      display: inline-block
+      text-align: center
+      width: 20px
+      &.pass
+        color: $color-pass
+      &.info
+        color: $color-info
+      &.warning
+        color: $color-warning
+      &.danger
+        color: $color-danger-soft
+
+  .execution
+    display: inline-block
+    height: 25px
+    font-size: 0.8rem
+    line-height: 1.6rem
+    text-align: left
+    color: $color-tertiary
+    float: right
+    margin-right: 8px
+
+    .value
+      &.pass
+        color: $color-pass
+      &.warning
+        color: $color-warning
+      &.danger
+        color: $color-danger-soft
+
+#panel-toggle
+  display: none
+
+#chevron-toggle
+  display: inline-block
+  color: $color-tertiary
+  width: 25px
+  height: 25px
+  text-align: center
+  i.material-icons::before
+    font-family: "Material Icons"
+    content: "\E316"
+  &.active i.material-icons::before
+    font-family: "Material Icons"
+    content: "\E313"
+  &:hover, &:focus
+    color: $color-quinary
+    background-color: $color-primary
+
+.lucy-error-stack
+  background-color: $error-soft
+  width: calc( 100% - 16px )
+  height: calc( 215px - 16px )
+  overflow-y: auto
+  border-top: 1px solid $error-highlight
+  padding: 8px
+
+  code
+    background: $color-tertiary
+    border-radius: .4rem
+    font-size: 86%
+    margin: 0 .2rem
+    padding: .2rem .5rem
+    white-space: nowrap
+
+  pre
+    background: $color-tertiary
+    border-left: .3rem solid $color-primary
+    overflow-y: hidden
+
+    & > code
+      border-radius: 0
+      display: block
+      padding: 1rem 1.5rem
+      white-space: pre
+
+  .row
+    font-size: 0.8rem
+    font-weight: 300
+    color: $color-text-hard
+    padding: 0.2rem
+    border-bottom: 1px solid $error-highlight
+
+    .error .material-icons
+      font-size: 1rem
+      vertical-align: bottom
+
+    .desc
+      font-style: italic
+
+    .details
+      float: right
+
+      .file
+        font-style: normal
+        text-decoration: underline
+
+      .line
+        font-weight: bold
+
+    &.fatal
+      border-color: $color-danger
+
+      .error, .code
+        color: $color-danger
+        font-weight: bold
+        text-transform: uppercase
+
+    &.warning
+      border-color: $color-warning
+
+      .error, .code
+        color: $color-warning
+        font-weight: bold
+        text-transform: uppercase
+
+    &.notice
+      border-color: $color-primary
+
+      .error, .code
+        color: $color-primary
+        font-weight: bold
+        text-transform: uppercase
+
+    &.strict
+      border-color: $color-warning
+
+      .error, .code
+        color: $color-warning
+        font-weight: bold
+        text-transform: uppercase
+        text-decoration: underline
+
+    &.deprecated
+      border-color: $color-danger
+
+      .error, .code
+        color: $color-danger
+        font-weight: bold
+        text-transform: uppercase
+        text-decoration: line-through
