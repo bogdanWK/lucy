@@ -26,24 +26,6 @@ class ErrorHandler
 	 */
 	private $debug = false;
 
-	/**
-	 * Verbose mode.
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 * @var     bool $mute Set to true to hide all errors, false for default error class action.
-	 */
-	private $mute = false;
-
-	/**
-	 * User friendly message
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 * @var     string $friendlyMessage Friendly HTML error message shown if debug is off and mute is off.
-	 */
-	private $friendlyMessage;
-
 	private $errors = array();
 
 	/**
@@ -54,7 +36,7 @@ class ErrorHandler
 	 * @param   bool $debug True to show full PHP error, false to show prettier error text. (Default false)
 	 * @param   bool $mute  Set to true to hide all errors, false for default error class action. (Default false)
 	 */
-	public function __construct( $debug = false, $mute = false )
+	public function __construct( $debug = false )
 	{
 		set_error_handler( array( $this, "handleError" ) );
 		set_exception_handler( array( $this, "handleException" ) );
