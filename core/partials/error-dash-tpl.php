@@ -51,6 +51,7 @@ if( $error_count_fatal > 0 ) {
         <span class="label"><b>Errors: </b></span>
         <span class="value <?php echo $error_class; ?>" ><?php echo $error_count; ?> </span>
     </span>
+    <span id="lucy-title">lucy</span>
     <span class="execution">
         <span class="label"><b>Total Execution: </b></span>
         <span class="value <?php echo $total_exec_class; ?>"><?php echo $time_exec; ?></span>

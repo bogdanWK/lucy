@@ -1,5 +1,13 @@
 @charset "UTF-8";
 @font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Pacifico");
+  src: url(../font/Pacifico-Regular.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
@@ -63,6 +71,17 @@
         color: #ff9800; }
       #lucy-error-dashboard .status .value.danger {
         color: #e57373; }
+  #lucy-error-dashboard #lucy-title {
+    font-family: 'Pacifico', cursive;
+    color: #f4f5f6;
+    display: inline-block;
+    height: 25px;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    text-align: center;
+    vertical-align: top;
+    margin-left: calc( 50vw - 22.5px - 25px - 70px );
+  }
   #lucy-error-dashboard .execution {
     display: inline-block;
     height: 25px;
