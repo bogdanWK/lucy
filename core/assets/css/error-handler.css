@@ -171,7 +171,7 @@
     .lucy-error-stack .lucy-row.lucy-notice {
       border-color: #03a9f4; }
       .lucy-error-stack .lucy-row.lucy-notice .lucy-error, .lucy-error-stack .lucy-row.lucy-notice .lucy-code {
-        color: #9b4dca;
+        color: #03a9f4;
         font-weight: bold;
         text-transform: uppercase; }
     .lucy-error-stack .lucy-row.lucy-strict {
