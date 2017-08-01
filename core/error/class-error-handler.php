@@ -26,6 +26,12 @@ class ErrorHandler
 	 */
 	private $debug = false;
 
+	private $root_dir;
+
+	private $rel_path;
+
+	private $init_time;
+
 	private $errors = array();
 
 	/**
@@ -36,20 +42,25 @@ class ErrorHandler
 	 * @param   bool $debug True to show full PHP error, false to show prettier error text. (Default false)
 	 * @param   bool $mute  Set to true to hide all errors, false for default error class action. (Default false)
 	 */
-	public function __construct( $debug = false )
-	{
+	public function __construct( $debug = false ) {
+        $reflector = new ReflectionClass( get_class( $this ) );
+	    $this->root_dir = dirname( dirname( $reflector->getFileName() ) );
+        $this->rel_path = str_replace( $_SERVER['DOCUMENT_ROOT'], '', $this->root_dir );
+	    //var_dump(  $this->rel_path );
+	    $this->init_time = microtime( true );
+
 		set_error_handler( array( $this, "handleError" ) );
 		set_exception_handler( array( $this, "handleException" ) );
 		register_shutdown_function( array( $this, "displayError" ) );
 	}
 
 	public function displayError() {
-        $time_exec = number_format( microtime( true ) - LUCY_INIT, 4 );
-        $total_exec_class = 'pass';
-        if( $time_exec > 0.001 && $time_exec < 0.002 ) {
-            $total_exec_class = 'warning';
-        } else if ( $time_exec > 0.002 ) {
-            $total_exec_class = 'danger';
+        $time_exec = number_format( microtime( true ) - $this->init_time, 4 );
+        $total_exec_class = 'lucy-pass';
+        if( $time_exec > 0.05 && $time_exec < 0.2 ) {
+            $total_exec_class = 'lucy-warning';
+        } else if ( $time_exec > 0.5 ) {
+            $total_exec_class = 'lucy-danger';
         }
 	    ob_start();
 	    include ( __DIR__ . '/../partials/error-dash-tpl.php');

@@ -1,12 +1,10 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'Pacifico';
+  font-family: "Pacifico";
   font-style: normal;
   font-weight: 400;
   src: local("Pacifico");
-  src: url(../font/Pacifico-Regular.ttf) format("truetype");
-}
-
+  src: url(../font/Pacifico-Regular.ttf) format("truetype"); }
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
@@ -39,66 +37,65 @@
 #lucy-error-dashboard {
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
-  font-size: 1rem;
   background-color: #606c76;
   width: 100%;
   height: 250px;
   position: fixed;
   left: 0;
   bottom: -225px;
-  transition: bottom 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94); }
+  transition: bottom 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  z-index: 99999; }
   #lucy-error-dashboard.active {
     bottom: 0; }
-  #lucy-error-dashboard .status {
+  #lucy-error-dashboard .lucy-status {
     display: inline-block;
     height: 25px;
     vertical-align: top;
-    font-size: 0.8rem;
-    line-height: 1.6rem;
+    font-size: 12px;
+    line-height: 28px;
     text-align: left;
     color: #f4f5f6;
     margin-left: 8px; }
-    #lucy-error-dashboard .status .value {
+    #lucy-error-dashboard .lucy-status .lucy-value {
       font-weight: bold;
       display: inline-block;
       text-align: center;
       width: 20px; }
-      #lucy-error-dashboard .status .value.pass {
+      #lucy-error-dashboard .lucy-status .lucy-value.lucy-pass {
         color: #8bc34a; }
-      #lucy-error-dashboard .status .value.info {
+      #lucy-error-dashboard .lucy-status .lucy-value.lucy-info {
         color: #03a9f4; }
-      #lucy-error-dashboard .status .value.warning {
+      #lucy-error-dashboard .lucy-status .lucy-value.lucy-warning {
         color: #ff9800; }
-      #lucy-error-dashboard .status .value.danger {
+      #lucy-error-dashboard .lucy-status .lucy-value.lucy-danger {
         color: #e57373; }
   #lucy-error-dashboard #lucy-title {
-    font-family: 'Pacifico', cursive;
+    font-family: "Pacifico", cursive;
     color: #f4f5f6;
     display: inline-block;
     height: 25px;
-    font-size: 1rem;
-    line-height: 1.6rem;
+    font-size: 14px;
+    line-height: 28px;
     text-align: center;
     vertical-align: top;
-    margin-left: calc( 50vw - 22.5px - 25px - 70px );
-  }
-  #lucy-error-dashboard .execution {
+    margin-left: calc( 50vw - 22.5px - 25px - 70px ); }
+  #lucy-error-dashboard .lucy-execution {
     display: inline-block;
     height: 25px;
-    font-size: 0.8rem;
-    line-height: 1.6rem;
+    font-size: 12px;
+    line-height: 28px;
     text-align: left;
     color: #f4f5f6;
     float: right;
     margin-right: 8px; }
-    #lucy-error-dashboard .execution .value.pass {
+    #lucy-error-dashboard .lucy-execution .lucy-value.lucy-pass {
       color: #8bc34a; }
-    #lucy-error-dashboard .execution .value.warning {
+    #lucy-error-dashboard .lucy-execution .lucy-value.lucy-warning {
       color: #ff9800; }
-    #lucy-error-dashboard .execution .value.danger {
+    #lucy-error-dashboard .lucy-execution .lucy-value.lucy-danger {
       color: #e57373; }
 
-#panel-toggle {
+#lucy-panel-toggle {
   display: none; }
 
 #chevron-toggle {
@@ -119,7 +116,7 @@
 
 .lucy-error-stack {
   background-color: #ede7f6;
-  width: calc( 100% - 16px );
+  width: calc( 100vw - 16px );
   height: calc( 215px - 16px );
   overflow-y: auto;
   border-top: 1px solid #9575cd;
@@ -140,52 +137,52 @@
       display: block;
       padding: 1rem 1.5rem;
       white-space: pre; }
-  .lucy-error-stack .row {
+  .lucy-error-stack .lucy-row {
     font-size: 0.8rem;
     font-weight: 300;
     color: #333;
     padding: 0.2rem;
     border-bottom: 1px solid #9575cd; }
-    .lucy-error-stack .row .error .material-icons {
+    .lucy-error-stack .lucy-row .lucy-error .material-icons {
       font-size: 1rem;
       vertical-align: bottom; }
-    .lucy-error-stack .row .desc {
+    .lucy-error-stack .lucy-row .lucy-desc {
       font-style: italic; }
-    .lucy-error-stack .row .details {
+    .lucy-error-stack .lucy-row .lucy-details {
       float: right; }
-      .lucy-error-stack .row .details .file {
+      .lucy-error-stack .lucy-row .lucy-details .lucy-file {
         font-style: normal;
         text-decoration: underline; }
-      .lucy-error-stack .row .details .line {
+      .lucy-error-stack .lucy-row .lucy-details .lucy-line {
         font-weight: bold; }
-    .lucy-error-stack .row.fatal {
+    .lucy-error-stack .lucy-row.lucy-fatal {
       border-color: #f44336; }
-      .lucy-error-stack .row.fatal .error, .lucy-error-stack .row.fatal .code {
+      .lucy-error-stack .lucy-row.lucy-fatal .lucy-error, .lucy-error-stack .lucy-row.lucy-fatal .lucy-code {
         color: #f44336;
         font-weight: bold;
         text-transform: uppercase; }
-    .lucy-error-stack .row.warning {
+    .lucy-error-stack .lucy-row.lucy-warning {
       border-color: #ff9800; }
-      .lucy-error-stack .row.warning .error, .lucy-error-stack .row.warning .code {
+      .lucy-error-stack .lucy-row.lucy-warning .lucy-error, .lucy-error-stack .lucy-row.lucy-warning .lucy-code {
         color: #ff9800;
         font-weight: bold;
         text-transform: uppercase; }
-    .lucy-error-stack .row.notice {
+    .lucy-error-stack .lucy-row.lucy-notice {
       border-color: #9b4dca; }
-      .lucy-error-stack .row.notice .error, .lucy-error-stack .row.notice .code {
+      .lucy-error-stack .lucy-row.lucy-notice .lucy-error, .lucy-error-stack .lucy-row.lucy-notice .lucy-code {
         color: #9b4dca;
         font-weight: bold;
         text-transform: uppercase; }
-    .lucy-error-stack .row.strict {
+    .lucy-error-stack .lucy-row.lucy-strict {
       border-color: #ff9800; }
-      .lucy-error-stack .row.strict .error, .lucy-error-stack .row.strict .code {
+      .lucy-error-stack .lucy-row.lucy-strict .lucy-error, .lucy-error-stack .lucy-row.lucy-strict .lucy-code {
         color: #ff9800;
         font-weight: bold;
         text-transform: uppercase;
         text-decoration: underline; }
-    .lucy-error-stack .row.deprecated {
+    .lucy-error-stack .lucy-row.lucy-deprecated {
       border-color: #f44336; }
-      .lucy-error-stack .row.deprecated .error, .lucy-error-stack .row.deprecated .code {
+      .lucy-error-stack .lucy-row.lucy-deprecated .lucy-error, .lucy-error-stack .lucy-row.lucy-deprecated .lucy-code {
         color: #f44336;
         font-weight: bold;
         text-transform: uppercase;

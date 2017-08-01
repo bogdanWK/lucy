@@ -1,7 +1,6 @@
 #lucy-error-dashboard
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
   font-size: 14px
-  font-size: 1rem
   background-color: $color-secondary
   width: 100%
   height: 250px
@@ -9,32 +8,33 @@
   left: 0
   bottom: -225px
   transition: bottom 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94)
+  z-index: 99999
 
   &.active
     bottom: 0
 
-  .status
+  .lucy-status
     display: inline-block
     height: 25px
     vertical-align: top
-    font-size: 0.8rem
-    line-height: 1.6rem
+    font-size: 12px
+    line-height: 28px
     text-align: left
     color: $color-tertiary
     margin-left: 8px
 
-    .value
+    .lucy-value
       font-weight: bold
       display: inline-block
       text-align: center
       width: 20px
-      &.pass
+      &.lucy-pass
         color: $color-pass
-      &.info
+      &.lucy-info
         color: $color-info
-      &.warning
+      &.lucy-warning
         color: $color-warning
-      &.danger
+      &.lucy-danger
         color: $color-danger-soft
 
   #lucy-title
@@ -42,31 +42,31 @@
     color: #f4f5f6
     display: inline-block
     height: 25px
-    font-size: 1rem
-    line-height: 1.6rem
+    font-size: 14px
+    line-height: 28px
     text-align: center
     vertical-align: top
     margin-left: calc( 50vw - 22.5px - 25px - 70px )
 
-  .execution
+  .lucy-execution
     display: inline-block
     height: 25px
-    font-size: 0.8rem
-    line-height: 1.6rem
+    font-size: 12px
+    line-height: 28px
     text-align: left
     color: $color-tertiary
     float: right
     margin-right: 8px
 
-    .value
-      &.pass
+    .lucy-value
+      &.lucy-pass
         color: $color-pass
-      &.warning
+      &.lucy-warning
         color: $color-warning
-      &.danger
+      &.lucy-danger
         color: $color-danger-soft
 
-#panel-toggle
+#lucy-panel-toggle
   display: none
 
 #chevron-toggle
@@ -87,7 +87,7 @@
 
 .lucy-error-stack
   background-color: $error-soft
-  width: calc( 100% - 16px )
+  width: calc( 100vw - 16px )
   height: calc( 215px - 16px )
   overflow-y: auto
   border-top: 1px solid $error-highlight
@@ -112,67 +112,67 @@
       padding: 1rem 1.5rem
       white-space: pre
 
-  .row
+  .lucy-row
     font-size: 0.8rem
     font-weight: 300
     color: $color-text-hard
     padding: 0.2rem
     border-bottom: 1px solid $error-highlight
 
-    .error .material-icons
+    .lucy-error .material-icons
       font-size: 1rem
       vertical-align: bottom
 
-    .desc
+    .lucy-desc
       font-style: italic
 
-    .details
+    .lucy-details
       float: right
 
-      .file
+      .lucy-file
         font-style: normal
         text-decoration: underline
 
-      .line
+      .lucy-line
         font-weight: bold
 
-    &.fatal
+    &.lucy-fatal
       border-color: $color-danger
 
-      .error, .code
+      .lucy-error, .lucy-code
         color: $color-danger
         font-weight: bold
         text-transform: uppercase
 
-    &.warning
+    &.lucy-warning
       border-color: $color-warning
 
-      .error, .code
+      .lucy-error, .lucy-code
         color: $color-warning
         font-weight: bold
         text-transform: uppercase
 
-    &.notice
+    &.lucy-notice
       border-color: $color-primary
 
-      .error, .code
+      .lucy-error, .lucy-code
         color: $color-primary
         font-weight: bold
         text-transform: uppercase
 
-    &.strict
+    &.lucy-strict
       border-color: $color-warning
 
-      .error, .code
+      .lucy-error, .lucy-code
         color: $color-warning
         font-weight: bold
         text-transform: uppercase
         text-decoration: underline
 
-    &.deprecated
+    &.lucy-deprecated
       border-color: $color-danger
 
-      .error, .code
+      .lucy-error, .lucy-code
         color: $color-danger
         font-weight: bold
         text-transform: uppercase
