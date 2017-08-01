@@ -123,10 +123,10 @@
   padding: 8px; }
   .lucy-error-stack code {
     background: #f4f5f6;
-    border-radius: 0.4rem;
+    border-radius: 6px;
     font-size: 86%;
-    margin: 0 0.2rem;
-    padding: 0.2rem 0.5rem;
+    margin: 3px;
+    padding: 3px 9px;
     white-space: nowrap; }
   .lucy-error-stack pre {
     background: #f4f5f6;
@@ -135,21 +135,22 @@
     .lucy-error-stack pre > code {
       border-radius: 0;
       display: block;
-      padding: 1rem 1.5rem;
+      padding: 14px 26px;
       white-space: pre; }
   .lucy-error-stack .lucy-row {
-    font-size: 0.8rem;
+    font-size: 12px;
     font-weight: 300;
     color: #333;
-    padding: 0.2rem;
+    padding: 3px;
     border-bottom: 1px solid #9575cd; }
     .lucy-error-stack .lucy-row .lucy-error .material-icons {
-      font-size: 1rem;
+      font-size: 14px;
       vertical-align: bottom; }
     .lucy-error-stack .lucy-row .lucy-desc {
       font-style: italic; }
     .lucy-error-stack .lucy-row .lucy-details {
-      float: right; }
+      float: right;
+      margin-right: 12px; }
       .lucy-error-stack .lucy-row .lucy-details .lucy-file {
         font-style: normal;
         text-decoration: underline; }
